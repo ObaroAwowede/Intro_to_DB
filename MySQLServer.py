@@ -6,8 +6,9 @@ try:
         host = "localhost",
         user = input("Enter Username: "),
         password = getpass("Enter your password: "),
-        database = "alx_book_store"
     ) as connection:
-        print("Database 'alx_book_store' created successfully!")
+        with connection.cursor() as cursor:
+            cursor.execute("CREATE DATABASE IF NOT EXISTS alx_book_store")
+            print("Database 'alx_book_store' created successfully!")
 except Error as e:
     print(e)
