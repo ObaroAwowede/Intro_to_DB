@@ -1,4 +1,4 @@
-from mysql.connector import connect, Error
+import mysql.connector
 from getpass import getpass
 
 try:
