@@ -1,8 +1,3 @@
-import mysql.connector
-from getpass import getpass
-
-
-book_store_tables = """
 CREATE TABLE IF NOT EXISTS Books (
     book_id INT PRIMARY KEY,
     title VARCHAR(130) NOT NULL,
@@ -44,22 +39,3 @@ CREATE TABLE IF NOT EXISTS Order_Details (
     REFERENCES Books(book_id)
 );
 
-"""
-try:
-    with mysql.connector.connect(
-        host = "localhost",
-        user = input("Enter Username: "),
-        password = getpass("Enter your password: "),
-        database = "alx_book_store"
-    ) as connection:
-        with connection.cursor() as cursor:
-            cursor.execute("CREATE DATABASE IF NOT EXISTS alx_book_store")
-            print("Database 'alx_book_store' created successfully!")
-            cursor.execute(book_store_tables)
-            connection.commit()
-            print("Tables created successfully in this database")
-            
-        with open("task_2.sql", "w") as f:
-            f.write(book_store_tables.lstrip())
-except mysql.connector.Error as e:
-    print(e)
