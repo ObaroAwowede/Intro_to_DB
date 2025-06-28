@@ -2,7 +2,7 @@ import mysql.connector
 from getpass import getpass
 
 try:
-    with connect(
+    with mysql.connector.connect(
         host = "localhost",
         user = input("Enter Username: "),
         password = getpass("Enter your password: "),
