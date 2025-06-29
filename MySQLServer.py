@@ -43,7 +43,6 @@ CREATE TABLE IF NOT EXISTS Order_Details (
 
 """
 
-
 description_of_books = """
 SELECT
     COLUMN_NAME,
@@ -56,6 +55,12 @@ FROM INFORMATION_SCHEMA.COLUMNS
 WHERE TABLE_SCHEMA = 'alx_book_store'
     AND TABLE_NAME = 'Books'
 ORDER BY ORDINAL_POSITION
+"""
+
+inserting_info_to_customers_table = """
+INSERT INTO Customers (customer_id,customer_name, email, address)
+VALUES
+    (1,"Cole Baidoo","cbaidoo@sandtech.com", "123 Happiness Ave.")
 """
 try:
     with mysql.connector.connect(
@@ -96,7 +101,11 @@ try:
                         print(f" - {table_name}")
                         
         with open("task_4.sql","w") as f:
+            f.write("USE alx_book_store;\n")
             f.write(description_of_books.strip())
+        with open("task_5.sql","w") as f:
+            f.write("USE alx_book_store;\n")
+            f.write(inserting_info_to_customers_table)
                 
 except mysql.connector.Error as e:
     print(e)
