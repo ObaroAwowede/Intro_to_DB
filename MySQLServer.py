@@ -52,11 +52,26 @@ try:
         with connection.cursor() as cursor:
             cursor.execute("CREATE DATABASE IF NOT EXISTS alx_book_store")
             print("Database 'alx_book_store' created successfully!")
-            cursor.execute(book_store_tables)
+            for table in book_store_tables.strip().split(';'):
+                table = table.strip()
+                if not table:
+                    continue
+                cursor.execute(table + ';')
             connection.commit()
             print("Tables created successfully in this database")
-            
+        
         with open("task_2.sql", "w") as f:
             f.write(book_store_tables.lstrip())
+        
+        with connection.cursor() as cursor:
+                cursor.execute("SHOW TABLES")
+                tables = cursor.fetchall()
+
+                if not tables:
+                    print(f"No tables found in database.")
+                else:
+                    print(f"Tables:")
+                    for (table_name,) in tables:
+                        print(f" - {table_name}")
 except mysql.connector.Error as e:
     print(e)
