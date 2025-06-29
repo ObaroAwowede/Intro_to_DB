@@ -38,3 +38,5 @@ CREATE TABLE IF NOT EXISTS Order_Details (
     FOREIGN KEY (book_id) REFERENCES Books(book_id)
 );
 
+
+SHOW TABLES;

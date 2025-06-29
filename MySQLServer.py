@@ -67,6 +67,7 @@ try:
             f.write("CREATE DATABASE IF NOT EXISTS alx_book_store;\n")
             f.write("USE alx_book_store;\n")
             f.write(book_store_tables.lstrip())
+            f.write("\nSHOW TABLES;")
         
         with connection.cursor() as cursor:
                 cursor.execute("SHOW TABLES")
