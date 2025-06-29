@@ -59,8 +59,13 @@ try:
                 cursor.execute(table + ';')
             connection.commit()
             print("Tables created successfully in this database")
-        
+               
         with open("task_2.sql", "w") as f:
+            f.write(book_store_tables.lstrip())
+
+        with open("task_3.sql", "w") as f:
+            f.write("CREATE DATABASE IF NOT EXISTS alx_book_store;\n")
+            f.write("USE alx_book_store;\n")
             f.write(book_store_tables.lstrip())
         
         with connection.cursor() as cursor:
