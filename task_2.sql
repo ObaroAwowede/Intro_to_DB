@@ -36,3 +36,10 @@ CREATE TABLE IF NOT EXISTS Order_Details (
     FOREIGN KEY (book_id) REFERENCES Books(book_id)
 );
 
+CREATE TABLE IF NOT EXISTS customer (
+    customer_id INT PRIMARY KEY,
+    customer_name VARCHAR(215) NOT NULL,
+    email VARCHAR(215) NOT NULL,
+    address TEXT NOT NULL
+);
+

@@ -41,6 +41,13 @@ CREATE TABLE IF NOT EXISTS Order_Details (
     FOREIGN KEY (book_id) REFERENCES Books(book_id)
 );
 
+CREATE TABLE IF NOT EXISTS customer (
+    customer_id INT PRIMARY KEY,
+    customer_name VARCHAR(215) NOT NULL,
+    email VARCHAR(215) NOT NULL,
+    address TEXT NOT NULL
+);
+
 """
 
 description_of_books = """
@@ -58,7 +65,7 @@ ORDER BY ORDINAL_POSITION
 """
 
 inserting_info_to_customers_table = """
-INSERT INTO Customers (customer_id,customer_name, email, address)
+INSERT INTO customer (customer_id,customer_name, email, address)
 VALUES
     (1,"Cole Baidoo","cbaidoo@sandtech.com", "123 Happiness Ave.")
 """
