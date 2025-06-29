@@ -42,6 +42,21 @@ CREATE TABLE IF NOT EXISTS Order_Details (
 );
 
 """
+
+
+description_of_books = """
+SELECT
+    COLUMN_NAME,
+    COLUMN_TYPE,
+    IS_NULLABLE,
+    COLUMN_KEY,
+    COLUMN_DEFAULT,
+    EXTRA
+FROM INFORMATION_SCHEMA.COLUMNS
+WHERE TABLE_SCHEMA = DATABASE()
+    AND TABLE_NAME = 'Books'
+ORDER BY ORDINAL_POSITION
+"""
 try:
     with mysql.connector.connect(
         host = "localhost",
@@ -79,5 +94,9 @@ try:
                     print(f"Tables:")
                     for (table_name,) in tables:
                         print(f" - {table_name}")
+                        
+        with open("task_4.sql","w") as f:
+            f.write(description_of_books.strip())
+                
 except mysql.connector.Error as e:
     print(e)
