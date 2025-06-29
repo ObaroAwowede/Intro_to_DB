@@ -64,10 +64,18 @@ WHERE TABLE_SCHEMA = 'alx_book_store'
 ORDER BY ORDINAL_POSITION
 """
 
-inserting_info_to_customers_table = """
+inserting_info_to_customer_table = """
 INSERT INTO customer (customer_id,customer_name, email, address)
 VALUES
     (1,"Cole Baidoo","cbaidoo@sandtech.com", "123 Happiness Ave.")
+"""
+
+multiple_insertions_to_customer_table = """
+INSERT INTO customer (customer_id,customer_name, email, address)
+VALUES
+    (2,"Blessing Malik","bmalik@sandtech.com", "124 Happiness Ave.")
+    (3,"Obed Ehoneah","eobed@sandtech.com", "125 Happiness Ave.")
+    (4,"Nehemial Kamolu","nkamolu@sandtech.com", "126 Happiness Ave.")
 """
 try:
     with mysql.connector.connect(
@@ -112,7 +120,10 @@ try:
             f.write(description_of_books.strip())
         with open("task_5.sql","w") as f:
             f.write("USE alx_book_store;\n")
-            f.write(inserting_info_to_customers_table)
+            f.write(inserting_info_to_customer_table)
+        with open("task_6.sql", "w") as f:
+            f.write("USE alx_book_store")
+            f.write(multiple_insertions_to_customer_table)
                 
 except mysql.connector.Error as e:
     print(e)
