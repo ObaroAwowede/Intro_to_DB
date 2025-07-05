@@ -27,7 +27,7 @@ DROP TABLE IF EXISTS `Authors`;
 CREATE TABLE `Authors` (
   `author_id` int NOT NULL,
   `author_name` varchar(215) NOT NULL,
-  PRIMARY KEY (`author_id`)
+  PRIMARY KEY (author_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
